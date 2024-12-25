@@ -27,3 +27,4 @@ INSERT INTO VerifiedUsers (organization, organizationSupportEmail, registeredDev
 VALUES
 ('Company A', 'support@companya.com', 'Device123', 'uniqueID123', 'support@companya.com'),
 ('Company B', 'support@companyb.com', 'Device456', 'uniqueID456', 'support@companyb.com');
+

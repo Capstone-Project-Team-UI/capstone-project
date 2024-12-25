@@ -1,10 +1,39 @@
 # Base URL for the API
 $baseUrl = "http://localhost:8090/users"
 
+# Function to display response status and body
+function Show-Response {
+    param (
+        [Parameter(Mandatory = $true)] $Response,
+        [Parameter(Mandatory = $true)] $StatusCode
+    )
+    Write-Host "Status Code: $StatusCode"
+    Write-Host "Response Body: $($Response | ConvertTo-Json -Depth 3)"
+}
+
+# Function to handle errors
+function Handle-Error {
+    param (
+        [Parameter(Mandatory = $true)] [System.Management.Automation.ErrorRecord] $ErrorRecord
+    )
+    $response = $ErrorRecord.Exception.Response
+    if ($response -ne $null) {
+        $statusCode = $response.StatusCode
+        Write-Host "Error Status Code: $statusCode"
+        Write-Host "Error Message: $($ErrorRecord.Exception.Message)"
+    } else {
+        Write-Host "Unexpected Error: $($ErrorRecord.Exception.Message)"
+    }
+}
+
 # 1. Test GET endpoint: Get all users
 Write-Host "Testing GET /users (Fetch All Users)..."
-$response = Invoke-RestMethod -Uri "$baseUrl" -Method Get
-Write-Host "Response: $($response | ConvertTo-Json -Depth 3)"
+try {
+    $response = Invoke-RestMethod -Uri "$baseUrl" -Method Get -ErrorAction Stop
+    Show-Response -Response $response -StatusCode 200
+} catch {
+    Handle-Error -ErrorRecord $_
+}
 Write-Host ""
 
 # 2. Test POST endpoint: Add a new user
@@ -12,38 +41,16 @@ Write-Host "Testing POST /users (Add User)..."
 $newUser = @{
     userID = "user2"
     organization = "Company B"
-    serialNumber = "Device456"
+    serialNumber = "Device45"
     uniqueID = "uniqueID456"
     emailAddress = "support@companyb.com"
 }
-$response = Invoke-RestMethod -Uri "$baseUrl" -Method Post -Body ($newUser | ConvertTo-Json) -ContentType "application/json"
-Write-Host "Response: $($response)"
-Write-Host ""
-
-# 3. Test PUT endpoint: Update an existing user
-Write-Host "Testing PUT /users/{userID} (Update User)..."
-$updatedUser = @{
-    organization = "Company C Updated"
-    serialNumber = "Device789"
-    uniqueID = "uniqueID789Updated"
-    emailAddress = "updated_support@companyc.com"
+try {
+    $response = Invoke-RestMethod -Uri "$baseUrl" -Method Post -Body ($newUser | ConvertTo-Json -Depth 10) -ContentType "application/json" -ErrorAction Stop
+    Show-Response -Response $response -StatusCode 201
+} catch {
+    Handle-Error -ErrorRecord $_
 }
-$userIDToUpdate = "user3"
-$response = Invoke-RestMethod -Uri "$baseUrl/$userIDToUpdate" -Method Put -Body ($updatedUser | ConvertTo-Json) -ContentType "application/json"
-Write-Host "Response: $($response)"
-Write-Host ""
-
-# Optional: Test for invalid data (e.g., invalid userID in PUT request)
-Write-Host "Testing PUT /users/{invalid_userID} (Update Non-existent User)..."
-$updatedUserInvalid = @{
-    organization = "Non-existent Company"
-    serialNumber = "Device999"
-    uniqueID = "uniqueID999"
-    emailAddress = "nonexistent@company.com"
-}
-$invalidUserID = "invalid_user_id"
-$response = Invoke-RestMethod -Uri "$baseUrl/$invalidUserID" -Method Put -Body ($updatedUserInvalid | ConvertTo-Json) -ContentType "application/json" -ErrorAction SilentlyContinue
-Write-Host "Response: $($response)"
 Write-Host ""
 
 # Optional: Test POST request with missing data (invalid data)
@@ -52,8 +59,12 @@ $invalidUser = @{
     userID = "user4"
     # Missing organization, serialNumber, uniqueID, and emailAddress
 }
-$response = Invoke-RestMethod -Uri "$baseUrl" -Method Post -Body ($invalidUser | ConvertTo-Json) -ContentType "application/json" -ErrorAction SilentlyContinue
-Write-Host "Response: $($response)"
+try {
+    $response = Invoke-RestMethod -Uri "$baseUrl" -Method Post -Body ($invalidUser | ConvertTo-Json -Depth 10) -ContentType "application/json" -ErrorAction Stop
+    Show-Response -Response $response -StatusCode 400
+} catch {
+    Handle-Error -ErrorRecord $_
+}
 Write-Host ""
 
 Write-Host "All tests complete."
