@@ -2,6 +2,8 @@ package com.capstone.cloudcontrol.remotepccontrol.usermanagement;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import com.capstone.cloudcontrol.remotepccontrol.usermanagement.user;
+
 
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Email;

@@ -44,7 +44,7 @@ public class CertificateController {
         certificateManagement.pushCertificate(certificate);
 
         // Create a response map for the message
-        Map<String, String> responseMessage = Map.of("message", "Certificate added successfully!");
+        Map<String, String> responseMessage = Map.of("message", "Certificate added successfully");
 
         // Return the response with status 201 (Created)
         return ResponseEntity.status(HttpStatus.SC_CREATED).body(responseMessage);
@@ -61,7 +61,7 @@ public class CertificateController {
                 String targetDirectory = System.getProperty("user.dir") + "/certificates";
                 // deepcode ignore PT: <please specify a reason of ignoring this>
                 certificateManagement.downloadCertificateFiles(certificate, targetDirectory);
-                return ResponseEntity.ok(certificate);
+                return ResponseEntity.ok().build();
             } else {
                 return ResponseEntity.notFound().build();
             }

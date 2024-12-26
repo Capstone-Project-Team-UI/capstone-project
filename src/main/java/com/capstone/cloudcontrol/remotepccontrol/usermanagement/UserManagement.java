@@ -54,4 +54,26 @@ public class UserManagement {
                                 .update();
         return updated == 1;
     }
+
+    // Method to check if a user exists in the Users table based on multiple fields
+    public static boolean userExists(JdbcClient jdbcClient, user existingUser) {
+        String query = "SELECT COUNT(*) FROM Users WHERE userID = :userID AND organization = :organization AND serialNumber = :serialNumber AND uniqueID = :uniqueID AND emailAddress = :emailAddress";
+        
+        // Execute the query with named parameters using the passed jdbcClient
+        List<Map<String, Object>> result = jdbcClient.sql(query)
+                                                    .param("userID", existingUser.userID())
+                                                    .param("organization", existingUser.organization())
+                                                    .param("serialNumber", existingUser.serialNumber())
+                                                    .param("uniqueID", existingUser.uniqueID())
+                                                    .param("emailAddress", existingUser.emailAddress())
+                                                    .query()
+                                                    .listOfRows();
+        
+        // Check if the result is not empty and the count is greater than 0
+        return !result.isEmpty() && ((Long) result.get(0).get("COUNT(*)")) > 0;
+    }
+    
+    
+    
+
 }
