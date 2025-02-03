@@ -58,7 +58,7 @@ public class CertificateController {
         try {
             Map<String, String> certificate = certificateManagement.getCertificate(organization, serialNumber, uniqueID);
             if (certificate != null) {
-                String targetDirectory = System.getProperty("user.dir") + "/certificates";
+                String targetDirectory = "C:\\Program Files\\DASH CLI 7.0\\certs";
                 // deepcode ignore PT: <please specify a reason of ignoring this>
                 certificateManagement.downloadCertificateFiles(certificate, targetDirectory);
                 return ResponseEntity.ok().build();
