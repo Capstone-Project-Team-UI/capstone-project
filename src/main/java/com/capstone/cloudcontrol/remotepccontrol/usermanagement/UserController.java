@@ -92,4 +92,37 @@ public class UserController {
                     .body("{\"error\": \"User ID '" + newUser.userID() + "' already exists.\"}");
         }
     }
+
+    // GET endpoint: Check if a user exists in the database based on multiple fields
+    @GetMapping("/checkUser")
+    public ResponseEntity<String> checkUser(
+            @RequestParam String userID,
+            @RequestParam String organization,
+            @RequestParam String serialNumber,
+            @RequestParam String uniqueID,
+            @RequestParam String emailAddress) {
+
+        // Create a user object from the parameters
+        user newUser = new user(userID, organization, serialNumber, uniqueID, emailAddress);
+
+        // (Optionally, add manual validation here or use a Validator)
+        
+        logger.info("Checking existence of user with ID: {}, Organization: {}, Serial Number: {}, Unique ID: {}, Email: {}",
+                    newUser.userID(), newUser.organization(), newUser.serialNumber(), newUser.uniqueID(), newUser.emailAddress());
+
+        boolean userExists = userManagementService.userExists(newUser);
+
+        if (userExists) {
+            logger.info("User exists in the database.");
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("{\"message\": \"User exists in the database.\"}");
+        } else {
+            logger.warn("User not found in the database.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("{\"error\": \"User not found in the database.\"}");
+        }
+    }
+
+
+
 }
