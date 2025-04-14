@@ -43,7 +43,8 @@ public class UserManagement {
                                                     .param("organization", organization)
                                                     .query()
                                                     .listOfRows();
-        return !result.isEmpty() && ((Long) result.get(0).get("COUNT(*)")) > 0;
+        System.out.println(result);
+        return !result.isEmpty() && ((Long) result.get(0).get("count")) > 0;
     }
 
     // Method to add a new user
