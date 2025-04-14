@@ -1,0 +1,42 @@
+2/24/2025 5:34:21 PM: 🔍 Checking user: http://localhost:8090/users/checkUser?userID=darkc&organization=Company A&serialNumber=PF5EVLV3&uniqueID=179d0fcf-6396-4fbc-87c1-cbb41fb2c083&emailAddress=darkc@company.com
+2/24/2025 5:34:26 PM: ⚠ API Request Failed: No connection could be made because the target machine actively refused it. (localhost:8090)
+2/24/2025 5:34:26 PM: 📤 Registering user: {"userID":"darkc","organization":"Company A","serialNumber":"PF5EVLV3","uniqueID":"179d0fcf-6396-4fbc-87c1-cbb41fb2c083","emailAddress":"darkc@company.com"}
+2/24/2025 5:34:30 PM: ⚠ API Request Failed: No connection could be made because the target machine actively refused it. (localhost:8090)
+2/25/2025 5:43:37 PM: 🔍 Checking user: http://localhost:8090/users/checkUser?userID=darkc&organization=Company A&serialNumber=PF5EVLV3&uniqueID=9c367a5e-ede2-489e-84bb-ae5c8b77f03f&emailAddress=darkc@company.com
+2/25/2025 5:43:37 PM: ❌ User not found: An unexpected error occurred.
+2/25/2025 5:43:37 PM: 📤 Registering user: {"userID":"darkc","organization":"Company A","serialNumber":"PF5EVLV3","uniqueID":"9c367a5e-ede2-489e-84bb-ae5c8b77f03f","emailAddress":"darkc@company.com"}
+2/25/2025 5:43:37 PM: ❌ Registration failed: {"validHash":"Invalid unique ID format. Must be a valid hash."}
+2/25/2025 5:43:45 PM: 🔍 Checking user: http://localhost:8090/users/checkUser?userID=darkc&organization=Company A&serialNumber=PF5EVLV3&uniqueID=6d5956d0-4e45-46d4-849c-f5389fcd7628&emailAddress=darkc@company.com
+2/25/2025 5:43:45 PM: ❌ User not found: An unexpected error occurred.
+2/25/2025 5:43:45 PM: 📤 Registering user: {"userID":"darkc","organization":"Company A","serialNumber":"PF5EVLV3","uniqueID":"6d5956d0-4e45-46d4-849c-f5389fcd7628","emailAddress":"darkc@company.com"}
+2/25/2025 5:43:45 PM: ❌ Registration failed: {"validHash":"Invalid unique ID format. Must be a valid hash."}
+2/25/2025 5:47:58 PM: 🔍 Checking user: http://localhost:8090/users/checkUser?userID=darkc&organization=Company A&serialNumber=PF5EVLV3&uniqueID=3cb123533d3d6671e6d8e3915dd09c4c5eb447cd53196a778f104ca4bf6fbbb9&emailAddress=darkc@company.com
+2/25/2025 5:47:58 PM: ❌ User not found: An unexpected error occurred.
+2/25/2025 5:47:58 PM: 📤 Registering user: {"userID":"darkc","organization":"Company A","serialNumber":"PF5EVLV3","uniqueID":"3cb123533d3d6671e6d8e3915dd09c4c5eb447cd53196a778f104ca4bf6fbbb9","emailAddress":"darkc@company.com"}
+2/25/2025 5:47:58 PM: ❌ Registration failed: {"error": "Serial Number and Organization must exist in the VerifiedUsers table"}
+2/25/2025 6:03:23 PM: 📤 Verifying user: {"serialNumber":"PF5EVLV3","organization":"Company A"}
+2/25/2025 6:03:28 PM: ⚠ API Request Failed: No connection could be made because the target machine actively refused it. (localhost:8090)
+2/25/2025 6:05:31 PM: 📤 Verifying user: {"serialNumber":"PF5EVLV3","organization":"Company A"}
+2/25/2025 6:05:31 PM: ❌ Verification failed: An unexpected error occurred.
+2/25/2025 6:05:38 PM: 📤 Verifying user: {"serialNumber":"PF5EVLV3","organization":"Company A"}
+2/25/2025 6:05:38 PM: ❌ Verification failed: An unexpected error occurred.
+2/25/2025 6:06:01 PM: 📤 Verifying user: {"serialNumber":"PF5EVLV3","organization":"Company A"}
+2/25/2025 6:06:01 PM: ❌ Verification failed: An unexpected error occurred.
+2/25/2025 6:09:33 PM: 📤 Verifying user: {"serialNumber":"PF5EVLV3","organization":"Company A"}
+2/25/2025 6:09:33 PM: ❌ Verification failed: An unexpected error occurred.
+2/25/2025 6:35:28 PM: 📤 Verifying user: {"serialNumber":"PF5EVLV3","organization":"Company A"}
+2/25/2025 6:35:28 PM: ❌ Verification failed: An unexpected error occurred.
+2/25/2025 6:37:41 PM: 📤 Verifying user: {"serialNumber":"Device123","organization":"Company A"}
+2/25/2025 6:37:41 PM: ❌ Verification failed: An unexpected error occurred.
+2/25/2025 6:42:14 PM: 🔍 Checking user: http://localhost:8090/users/checkUser?userID=darkc&organization=Company A&serialNumber=Device123&uniqueID=99a419f54cc6024c4a103991e96838e9b5963b38c0921c604bed5dde326797a0&emailAddress=support@companya.com
+2/25/2025 6:42:14 PM: ❌ User not found: An unexpected error occurred.
+2/25/2025 6:42:14 PM: 📤 Registering user: {"userID":"darkc","organization":"Company A","serialNumber":"Device123","uniqueID":"99a419f54cc6024c4a103991e96838e9b5963b38c0921c604bed5dde326797a0","emailAddress":"support@companya.com"}
+2/25/2025 6:42:15 PM: ✅ Registration successful: {"message": "User added successfully!"}
+2/25/2025 6:49:00 PM: 🔍 Checking user: http://localhost:8090/users/checkUser?userID=darkc&organization=Company A&serialNumber=Device123&uniqueID=99a419f54cc6024c4a103991e96838e9b5963b38c0921c604bed5dde326797a0&emailAddress=support@companya.com
+2/25/2025 6:49:00 PM: ❌ User not found: An unexpected error occurred.
+2/25/2025 6:49:00 PM: 📤 Registering user: {"userID":"darkc","organization":"Company A","serialNumber":"Device123","uniqueID":"99a419f54cc6024c4a103991e96838e9b5963b38c0921c604bed5dde326797a0","emailAddress":"support@companya.com"}
+2/25/2025 6:49:01 PM: ❌ Registration failed: {"error": "User ID 'darkc' already exists."}
+2/28/2025 10:15:07 AM: 🔍 Checking user: http://localhost:8090/users/checkUser?userID=darkc&organization=Company A&serialNumber=Device123&uniqueID=99a419f54cc6024c4a103991e96838e9b5963b38c0921c604bed5dde326797a0&emailAddress=support@companya.com
+2/28/2025 10:15:08 AM: ❌ User not found: An unexpected error occurred.
+2/28/2025 10:15:08 AM: 📤 Registering user: {"userID":"darkc","organization":"Company A","serialNumber":"Device123","uniqueID":"99a419f54cc6024c4a103991e96838e9b5963b38c0921c604bed5dde326797a0","emailAddress":"support@companya.com"}
+2/28/2025 10:15:08 AM: ❌ Registration failed: {"error": "User ID 'darkc' already exists."}
